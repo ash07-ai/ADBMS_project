@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buffetly — Admin Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+</head>
+<body class="admin-body">
+
+  <!-- ============================================================ NAV -->
+  <nav class="nav admin-nav">
+    <a class="nav-logo" href="/">
+      Buffet<span>ly</span> <span class="admin-tag">Admin</span>
+    </a>
+    <div class="nav-links">
+      <a href="/">← Back to Site</a>
+    </div>
+  </nav>
+
+  <div class="admin-wrap">
+    <header class="admin-header">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        Database Dashboard
+      </div>
+      <h1 class="display admin-title">Platform Insights</h1>
+      <p class="admin-sub">Live aggregation queries from MongoDB — restaurants, reviews, and reservations.</p>
+    </header>
+
+    <!-- ============================================================ OVERVIEW STATS -->
+    <section class="overview-grid" id="overviewGrid">
+      <div class="skeleton overview-skeleton"></div>
+      <div class="skeleton overview-skeleton"></div>
+      <div class="skeleton overview-skeleton"></div>
+      <div class="skeleton overview-skeleton"></div>
+    </section>
+
+    <!-- ============================================================ CHARTS GRID -->
+    <section class="charts-grid">
+
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3>Top Rated Restaurants</h3>
+          <span class="agg-tag">$sort + $limit</span>
+        </div>
+        <div id="topRatedList" class="ranked-list">
+          <div class="skeleton sk-line w-100" style="height:40px;margin-bottom:8px"></div>
+          <div class="skeleton sk-line w-100" style="height:40px;margin-bottom:8px"></div>
+          <div class="skeleton sk-line w-100" style="height:40px"></div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3>Avg. Buffet Price by Area</h3>
+          <span class="agg-tag">$group + $avg</span>
+        </div>
+        <div id="priceByAreaChart" class="bar-chart"></div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3>Buffet Type Distribution</h3>
+          <span class="agg-tag">$unwind + $group</span>
+        </div>
+        <div id="typeDistribution" class="donut-wrap"></div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3>Cheapest Hi-Tea Buffets</h3>
+          <span class="agg-tag">$match + $sort</span>
+        </div>
+        <div id="cheapestHiTea" class="ranked-list">
+          <div class="skeleton sk-line w-100" style="height:40px;margin-bottom:8px"></div>
+          <div class="skeleton sk-line w-100" style="height:40px;margin-bottom:8px"></div>
+          <div class="skeleton sk-line w-100" style="height:40px"></div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3>Cuisine Popularity</h3>
+          <span class="agg-tag">$unwind + $group + $sort</span>
+        </div>
+        <div id="cuisineChart" class="bar-chart"></div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3>Booking Status</h3>
+          <span class="agg-tag">$group on bookings</span>
+        </div>
+        <div id="bookingStatusChart" class="status-chips"></div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3>Most Booked Buffet Type</h3>
+          <span class="agg-tag">$group + $sum</span>
+        </div>
+        <div id="popularBookedChart" class="bar-chart"></div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ BOOKINGS TABLE -->
+    <section class="bookings-section">
+      <div class="section-header">
+        <h2>Reservations</h2>
+        <span class="result-count" id="bookingResultCount">Loading…</span>
+      </div>
+
+      <div class="bookings-filter-bar">
+        <button class="filter-pill active" data-status="all">All</button>
+        <button class="filter-pill" data-status="pending">Pending</button>
+        <button class="filter-pill" data-status="confirmed">Confirmed</button>
+        <button class="filter-pill" data-status="cancelled">Cancelled</button>
+        <input class="search-input admin-search" id="bookingSearch" placeholder="Search by name, restaurant, or phone…" />
+      </div>
+
+      <div class="table-wrap">
+        <table class="bookings-table">
+          <thead>
+            <tr>
+              <th>Reference</th>
+              <th>Guest</th>
+              <th>Restaurant</th>
+              <th>Buffet</th>
+              <th>Date & Time</th>
+              <th>Party</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="bookingsTableBody">
+            <tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--muted)">Loading reservations…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+/* ============================================================
+   ADMIN DASHBOARD — Buffetly
+   Extends style.css. "Control room" feel: data-dense, calm.
+   ============================================================ */
+
+.admin-body { background: var(--cream); }
+
+.admin-nav .nav-links a {
+  font-weight: 600;
+  color: var(--burgundy);
+}
+.admin-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--burgundy);
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-pill);
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+.admin-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6rem 5vw 4rem;
+}
+
+.admin-header { margin-bottom: 2.5rem; }
+.admin-title { margin-bottom: 0.5rem; }
+.admin-sub { color: var(--muted); font-size: 0.95rem; max-width: 600px; }
+
+/* ============================================================
+   OVERVIEW CARDS
+   ============================================================ */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.overview-skeleton { height: 110px; border-radius: var(--radius-md); }
+.overview-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.overview-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--saffron);
+}
+.overview-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--burgundy);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.overview-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   CHARTS GRID
+   ============================================================ */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+.admin-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+.admin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+.admin-card-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.agg-tag {
+  font-family: monospace;
+  font-size: 0.68rem;
+  background: var(--cream-dk);
+  color: var(--ink-lt);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+}
+
+/* Ranked list (top rated, cheapest hi-tea) */
+.ranked-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.ranked-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  border: 1px solid var(--border);
+}
+.ranked-pos {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--saffron);
+  width: 24px;
+  flex-shrink: 0;
+  text-align: center;
+}
+.ranked-info { flex: 1; min-width: 0; }
+.ranked-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ranked-meta {
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+.ranked-value {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--burgundy);
+  flex-shrink: 0;
+}
+
+/* Bar chart (price by area, cuisine) */
+.bar-chart { display: flex; flex-direction: column; gap: 0.75rem; }
+.bar-row { display: flex; flex-direction: column; gap: 0.3rem; }
+.bar-row-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--ink-lt);
+}
+.bar-row-label strong { color: var(--ink); font-weight: 600; }
+.bar-track {
+  height: 8px;
+  background: var(--cream-dk);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--saffron), var(--burgundy));
+  border-radius: var(--radius-pill);
+  transition: width 0.6s ease;
+}
+
+/* Donut chart for buffet type distribution */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.donut-svg { flex-shrink: 0; }
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+.donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--ink-lt);
+}
+.donut-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.donut-legend-item strong { color: var(--ink); margin-left: auto; }
+
+/* Status chips */
+.status-chips { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.status-chip-card {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  padding: 1.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+}
+.status-chip-card.pending { border-color: #F4A94E; background: #FFF8EE; }
+.status-chip-card.confirmed { border-color: #66BB6A; background: #F1F8F2; }
+.status-chip-card.cancelled { border-color: #EF5350; background: #FDF1F0; }
+.status-chip-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.status-chip-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+/* ============================================================
+   BOOKINGS TABLE
+   ============================================================ */
+.bookings-section { margin-top: 1rem; }
+.bookings-filter-bar {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+.admin-search {
+  flex: 1;
+  min-width: 200px;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.1rem;
+  font-size: 0.82rem;
+}
+.admin-search:focus { outline: none; border-color: var(--saffron); }
+
+.table-wrap {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+.bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  min-width: 760px;
+}
+.bookings-table th {
+  text-align: left;
+  padding: 0.85rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border-bottom: 1.5px solid var(--border);
+  white-space: nowrap;
+}
+.bookings-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink-lt);
+  vertical-align: middle;
+}
+.bookings-table tr:last-child td { border-bottom: none; }
+.bookings-table tr:hover { background: var(--cream); }
+
+.ref-code {
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: var(--burgundy);
+  font-weight: 600;
+}
+.guest-name { font-weight: 600; color: var(--ink); }
+.guest-phone { font-size: 0.75rem; color: var(--muted); }
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.status-badge.pending { background: #FFF4E8; color: #9A5000; }
+.status-badge.confirmed { background: #E8F5E9; color: #2E7D32; }
+.status-badge.cancelled { background: #FDEAEA; color: #C62828; }
+
+.action-btns { display: flex; gap: 0.35rem; flex-wrap: nowrap; }
+.action-btn {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--ink-lt);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.action-btn.confirm:hover { background: #E8F5E9; border-color: #66BB6A; color: #2E7D32; }
+.action-btn.cancel:hover { background: #FDEAEA; border-color: #EF5350; color: #C62828; }
+.action-btn.delete:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .admin-wrap { padding: 6rem 4vw 3rem; }
+  .charts-grid { grid-template-columns: 1fr; }
+  .overview-grid { grid-template-columns: repeat(2, 1fr); }
+}

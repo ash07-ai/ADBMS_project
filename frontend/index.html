@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Buffetly — Discover the best buffets in Lahore. Hi-tea, lunch and dinner buffets, all in one place." />
+  <title>Buffetly — Lahore's Buffet Discovery Platform</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>" />
+</head>
+<body>
+
+  <!-- ============================================================ NAV -->
+  <nav class="nav" aria-label="Main navigation">
+    <a class="nav-logo" href="/" aria-label="Buffetly home">
+      Buffet<span>ly</span>
+    </a>
+    <div class="nav-links">
+      <a href="#listingsSection">Browse Buffets</a>
+      <a href="#howSection">How It Works</a>
+      <a href="#featuredSection">Featured</a>
+      <a href="#listingsSection" class="nav-cta">Browse Buffets</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ============================================================ HERO -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        Lahore's Buffet Guide
+      </div>
+      <h1>
+        Every buffet<br>
+        in Lahore —<br>
+        <em>found in seconds.</em>
+      </h1>
+      <p class="hero-sub">
+        Stop scrolling Instagram for hi-tea prices. Buffetly puts every buffet in Lahore — with live prices, timings, and menus — in one clean, searchable place.
+      </p>
+      <div class="search-bar" role="search">
+        <input
+          class="search-input"
+          id="heroSearch"
+          type="search"
+          placeholder="Search by restaurant, area, or cuisine…"
+          aria-label="Search buffets"
+          autocomplete="off"
+        />
+        <button class="search-btn" id="heroSearchBtn" aria-label="Search">
+          Search 🔍
+        </button>
+      </div>
+      <div class="hero-stats" aria-label="Platform statistics">
+        <div>
+          <div class="hero-stat-num">11+</div>
+          <div class="hero-stat-label">Restaurants</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">3</div>
+          <div class="hero-stat-label">Buffet types</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">PKR 1.7k</div>
+          <div class="hero-stat-label">Lowest hi-tea</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right" aria-hidden="true">
+      <div class="hero-mosaic">
+        <div class="mosaic-img">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Buffet spread" />
+          <div class="mosaic-overlay"></div>
+        </div>
+        <div class="mosaic-img">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Restaurant interior" />
+          <div class="mosaic-overlay"></div>
+        </div>
+        <div class="mosaic-img">
+          <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80" alt="Desserts" />
+          <div class="mosaic-overlay"></div>
+        </div>
+        <div class="mosaic-img">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Pakistani food" />
+          <div class="mosaic-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ FILTER BAR -->
+  <div class="filter-section" role="region" aria-label="Filters">
+    <div class="filter-inner">
+      <span class="filter-label">Type</span>
+      <button class="filter-pill active" data-type="all">All Buffets</button>
+      <button class="filter-pill" data-type="Hi-Tea">Hi-Tea</button>
+      <button class="filter-pill" data-type="Lunch">Lunch</button>
+      <button class="filter-pill" data-type="Dinner">Dinner</button>
+      <button class="filter-pill" data-type="Brunch">Brunch</button>
+      <div class="filter-divider" aria-hidden="true"></div>
+      <span class="filter-label">Area</span>
+      <select class="filter-select" id="areaFilter" aria-label="Filter by area">
+        <option value="all">All Areas</option>
+        <option value="Gulberg">Gulberg</option>
+        <option value="DHA">DHA</option>
+        <option value="Johar Town">Johar Town</option>
+        <option value="Garden Town">Garden Town</option>
+        <option value="Lake City">Lake City</option>
+        <option value="Canal Road">Canal Road</option>
+      </select>
+      <div class="filter-divider" aria-hidden="true"></div>
+      <span class="filter-label">Price</span>
+      <select class="filter-select" id="priceMin" aria-label="Minimum price">
+        <option value="">Min price</option>
+        <option value="0">Any</option>
+        <option value="1500">PKR 1,500+</option>
+        <option value="2000">PKR 2,000+</option>
+        <option value="2500">PKR 2,500+</option>
+        <option value="3000">PKR 3,000+</option>
+      </select>
+      <select class="filter-select" id="priceMax" aria-label="Maximum price">
+        <option value="">Max price</option>
+        <option value="2000">Under PKR 2,000</option>
+        <option value="2500">Under PKR 2,500</option>
+        <option value="3000">Under PKR 3,000</option>
+        <option value="4000">Under PKR 4,000</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ============================================================ LISTINGS -->
+  <section class="listings-section" id="listingsSection" aria-label="Restaurant listings">
+    <div class="section-header">
+      <h2>Buffets in Lahore</h2>
+      <span class="result-count" id="resultCount">Loading…</span>
+    </div>
+    <div class="restaurant-grid" id="restaurantGrid" role="list" aria-live="polite" aria-busy="true">
+      <!-- Cards rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ============================================================ FEATURED -->
+  <section class="featured-section" id="featuredSection" aria-label="Featured restaurants">
+    <div class="featured-inner">
+      <div class="section-header">
+        <h2>Staff Picks</h2>
+        <span class="result-count">Editor's choice</span>
+      </div>
+      <div class="featured-scroll" id="featuredScroll" role="list">
+        <!-- Featured cards rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ HOW IT WORKS -->
+  <section class="how-section" id="howSection" aria-label="How Buffetly works">
+    <div class="hero-eyebrow" style="margin:0 auto 1.5rem">How It Works</div>
+    <h2>Buffet hunting, made effortless</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-icon">🔍</div>
+        <h3>Search</h3>
+        <p>Type a restaurant name, area, or cuisine. Instant results with no page reload.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">🎯</div>
+        <h3>Filter</h3>
+        <p>Narrow by buffet type, location, and budget to find exactly what you're after.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">📋</div>
+        <h3>Compare</h3>
+        <p>See prices, timings, and slot availability side by side — no more switching tabs.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">📞</div>
+        <h3>Reserve</h3>
+        <p>Call or book directly from the listing. One tap to the restaurant.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Buffet<span>ly</span></div>
+        <p class="footer-desc">
+          Lahore's first dedicated buffet discovery platform. Built to end the Instagram scrolling.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="#listingsSection">All Buffets</a>
+        <a href="#listingsSection" onclick="document.querySelector('[data-type=Hi-Tea]').click()">Hi-Tea</a>
+        <a href="#listingsSection" onclick="document.querySelector('[data-type=Dinner]').click()">Dinner Buffets</a>
+        <a href="#featuredSection">Staff Picks</a>
+      </div>
+      <div class="footer-links">
+        <h4>Areas</h4>
+        <a href="#listingsSection">Gulberg</a>
+        <a href="#listingsSection">DHA</a>
+        <a href="#listingsSection">Johar Town</a>
+        <a href="#listingsSection">Garden Town</a>
+      </div>
+      <div class="footer-links">
+        <h4>Project</h4>
+        <a href="#">About Buffetly</a>
+        <a href="#">Submit a Restaurant</a>
+        <a href="/admin.html">Admin Dashboard</a>
+        <a href="#">ITU Lahore</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Buffetly. Built with <span class="footer-heart">♥</span> at ITU Lahore.</span>
+      <span>BSAI24014 · ADBMS Project</span>
+    </div>
+  </footer>
+
+  <!-- ============================================================ MODAL -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Restaurant details">
+    <div class="modal" id="modalContent"></div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
