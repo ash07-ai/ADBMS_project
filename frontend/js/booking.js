@@ -30,9 +30,13 @@ export function openBooking(restaurant) {
   const buffetTypes = [...new Set(restaurant.buffets.map(b => b.type))];
 
   // Get tomorrow's date as default
+// Min = tomorrow, max = 10 days from today
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split('T')[0];
+  const maxBooking = new Date();
+  maxBooking.setDate(maxBooking.getDate() + 10);
+  const maxDate = maxBooking.toISOString().split('T')[0];
 
   modal.innerHTML = `
     <div class="booking-header">
@@ -69,7 +73,7 @@ export function openBooking(restaurant) {
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Date *</label>
-          <input class="form-input" id="bk-date" type="date" min="${minDate}" />
+         <input class="form-input" id="bk-date" type="date" min="${minDate}" max="${maxDate}" />
         </div>
         <div class="form-group">
           <label class="form-label">Time Slot *</label>
@@ -126,8 +130,20 @@ async function handleSubmit() {
 
   // Validation
   if (!type)  { showToast('Please select a buffet type', 'error'); return; }
-  if (!name)  { showToast('Please enter your name', 'error'); return; }
-  if (!phone) { showToast('Please enter your phone number', 'error'); return; }
+if (!phone) { showToast('Please enter your phone number', 'error'); return; }
+  const cleanPhone = phone.replace(/[\s\-]/g, '');
+  if (!/^\d{10,11}$/.test(cleanPhone)) {
+    showToast('Phone number must be 10–11 digits (no spaces/dashes)', 'error');
+    return;
+  }
+  if (!date)  { showToast('Please select a date', 'error'); return; }
+  const selectedDate = new Date(date);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const maxDate = new Date(today); maxDate.setDate(maxDate.getDate() + 10);
+  if (selectedDate < today || selectedDate > maxDate) {
+    showToast('Date must be within the next 10 days', 'error');
+    return;
+  }
   if (!date)  { showToast('Please select a date', 'error'); return; }
   if (!time)  { showToast('Please select a time slot', 'error'); return; }
   if (!size)  { showToast('Please select party size', 'error'); return; }

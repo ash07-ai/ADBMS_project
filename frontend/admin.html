@@ -10,6 +10,24 @@
 </head>
 <body class="admin-body">
 
+  <!-- PASSWORD GATE -->
+  <script>
+    (function() {
+      const ADMIN_PASS = 'buffetly2024'; // change this to your real password
+      const SESSION_KEY = 'buffetly_admin_auth';
+      if (sessionStorage.getItem(SESSION_KEY) !== 'true') {
+        const pwd = prompt('Enter admin password:');
+        if (pwd !== ADMIN_PASS) {
+          document.write('<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;flex-direction:column;gap:1rem"><h2>Access Denied</h2><a href="/">← Back to site</a></div>');
+          document.close();
+          throw new Error('Unauthorized');
+        }
+        sessionStorage.setItem(SESSION_KEY, 'true');
+      }
+    })();
+  </script>
+
+  <!-- ============================================================ NAV -->
   <!-- ============================================================ NAV -->
   <nav class="nav admin-nav">
     <a class="nav-logo" href="/">
